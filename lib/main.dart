@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'search_bar.dart';
 import 'word_description.dart';
 import 'word_translations.dart';
+import 'word_related_phrases.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
               Divider(),
               WordTranslations(),
               Divider(),
-              Text("Phrases"),
+              WordRelatedPhrases(),
             ],
           ),
         ),
