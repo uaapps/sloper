@@ -23,7 +23,7 @@ class WordDescription extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "Іменник чоловічого роду. Не має форми множини.",
+              "Іменник чоловічого роду. Множини не має.",
               style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.grey[600],

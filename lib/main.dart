@@ -3,6 +3,7 @@ import 'search_bar.dart';
 import 'word_description.dart';
 import 'word_translations.dart';
 import 'word_related_phrases.dart';
+import 'footer.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           body: ListView(
             children: [
+              //TODO: create NavigationBar
               SearchBar(),
+              //TODO: create ResultPannel
               WordDescription(),
               Divider(),
               WordTranslations(),
@@ -31,6 +34,7 @@ class MyApp extends StatelessWidget {
               WordRelatedPhrases(),
             ],
           ),
+          bottomNavigationBar: Footer(),
         ),
       );
 }
