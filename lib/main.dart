@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'search_bar.dart';
+import 'word_description.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,16 +10,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'Sloper',
         theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
+          dividerTheme: DividerThemeData(
+            thickness: 3.0,
+            color: Colors.grey[600],
+            space: 50.0,
+            indent: 40.0,
+            endIndent: 40.0,
+          ),
         ),
         home: Scaffold(
           body: ListView(
             children: [
               SearchBar(),
-              Center(
-                child: Text("Word description"),
-              ),
-              Text("Translations"),
+              WordDescription(),
+              Divider(),
+              Text("Значення"),
+              Divider(),
               Text("Phrases"),
             ],
           ),
