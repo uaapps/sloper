@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'search_bar.dart';
 import 'word_description.dart';
+import 'word_translations.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
               SearchBar(),
               WordDescription(),
               Divider(),
-              Text("Значення"),
+              WordTranslations(),
               Divider(),
               Text("Phrases"),
             ],
