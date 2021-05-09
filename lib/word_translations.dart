@@ -7,14 +7,11 @@ class WordTranslations extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 0.0),
-                child: Text(
-                  "Значення",
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 20.0,
-                  ),
+              Text(
+                "Значення",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 20.0,
                 ),
               ),
             ],
@@ -28,7 +25,7 @@ class WordTranslations extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            margin: EdgeInsets.fromLTRB(60.0, 20.0, 0.0, 0.0),
+            margin: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
           ),
         ],
       );

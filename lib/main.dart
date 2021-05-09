@@ -19,8 +19,6 @@ class MyApp extends StatelessWidget {
             thickness: 3.0,
             color: Colors.grey[600],
             space: 50.0,
-            indent: 40.0,
-            endIndent: 40.0,
           ),
         ),
         home: Scaffold(

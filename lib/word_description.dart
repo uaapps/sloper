@@ -7,15 +7,12 @@ class WordDescription extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(40.0, 40.0, 40.0, 0.0),
-                child: Text(
-                  "der Kaffee",
-                  style: TextStyle(
-                    fontSize: 26.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                  ),
+              Text(
+                "der Kaffee",
+                style: TextStyle(
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2,
                 ),
               ),
             ],
@@ -29,7 +26,7 @@ class WordDescription extends StatelessWidget {
                 color: Colors.grey[600],
               ),
             ),
-            margin: EdgeInsets.fromLTRB(60.0, 10.0, 0.0, 0.0),
+            margin: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
           ),
         ],
       );

@@ -5,13 +5,16 @@ import 'word_related_phrases.dart';
 
 class SearchResult extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Column(
-        children: [
-          WordDescription(),
-          Divider(),
-          WordTranslations(),
-          Divider(),
-          WordRelatedPhrases(),
-        ],
+  Widget build(BuildContext context) => Container(
+        margin: EdgeInsets.fromLTRB(60.0, 40.0, 60.0, 0.0),
+        child: Column(
+          children: [
+            WordDescription(),
+            Divider(),
+            WordTranslations(),
+            Divider(),
+            WordRelatedPhrases(),
+          ],
+        ),
       );
 }

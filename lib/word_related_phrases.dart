@@ -7,14 +7,11 @@ class WordRelatedPhrases extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 0.0),
-                child: Text(
-                  "Вирази",
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 20.0,
-                  ),
+              Text(
+                "Вирази",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 20.0,
                 ),
               ),
             ],
@@ -29,7 +26,7 @@ class WordRelatedPhrases extends StatelessWidget {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            margin: EdgeInsets.fromLTRB(60.0, 20.0, 0.0, 0.0),
+            margin: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
           ),
           Container(
             alignment: Alignment.topLeft,
@@ -41,7 +38,7 @@ class WordRelatedPhrases extends StatelessWidget {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            margin: EdgeInsets.fromLTRB(60.0, 10.0, 0.0, 0.0),
+            margin: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
           ),
         ],
       );
