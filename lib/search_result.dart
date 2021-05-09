@@ -9,7 +9,10 @@ class SearchResult extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(60.0, 40.0, 60.0, 0.0),
         child: Column(
           children: [
-            WordDescription(),
+            WordDescription(
+              word: "der Kaffee",
+              description: "Іменник чоловічого роду. Множини не має.",
+            ),
             Divider(),
             WordTranslations(),
             Divider(),

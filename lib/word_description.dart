@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WordDescription extends StatelessWidget {
+  WordDescription({required this.word, required this.description});
+
+  final String word;
+  final String description;
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -8,7 +12,7 @@ class WordDescription extends StatelessWidget {
           Row(
             children: [
               Text(
-                "der Kaffee",
+                word,
                 style: TextStyle(
                   fontSize: 26.0,
                   fontWeight: FontWeight.bold,
@@ -20,7 +24,7 @@ class WordDescription extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "Іменник чоловічого роду. Множини не має.",
+              description,
               style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.grey[600],
