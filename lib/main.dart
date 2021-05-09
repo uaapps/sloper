@@ -4,6 +4,7 @@ import 'word_description.dart';
 import 'word_translations.dart';
 import 'word_related_phrases.dart';
 import 'footer.dart';
+import 'navigation_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'Sloper',
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+          ),
           dividerTheme: DividerThemeData(
             thickness: 3.0,
             color: Colors.grey[600],
@@ -22,9 +26,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: Scaffold(
+          appBar: buildAppBar(),
           body: ListView(
             children: [
-              //TODO: create NavigationBar
               SearchBar(),
               //TODO: create ResultPannel
               WordDescription(),

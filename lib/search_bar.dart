@@ -39,8 +39,8 @@ class SearchBar extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.purple,
-              Colors.red,
+              Colors.pink,
+              Colors.orange,
             ],
           ),
         ),
