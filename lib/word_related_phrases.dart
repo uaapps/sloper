@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class WordRelatedPhrases extends StatelessWidget {
+  WordRelatedPhrases({required this.phrase, required this.phraseTranslation});
+  final String phrase;
+  final String phraseTranslation;
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -19,7 +22,7 @@ class WordRelatedPhrases extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "einen Kaffee, bitte.",
+              phrase,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -31,7 +34,7 @@ class WordRelatedPhrases extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "одну каву, будь ласка.",
+              phraseTranslation,
               style: TextStyle(
                 color: Colors.grey[600],
                 fontSize: 16.0,

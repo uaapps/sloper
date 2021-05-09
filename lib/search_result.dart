@@ -18,7 +18,10 @@ class SearchResult extends StatelessWidget {
               translation: "кава",
             ),
             Divider(),
-            WordRelatedPhrases(),
+            WordRelatedPhrases(
+              phrase: "einen Kaffee, bitte.",
+              phraseTranslation: "одну каву, будь ласка.",
+            ),
           ],
         ),
       );
