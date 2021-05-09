@@ -5,7 +5,7 @@ AppBar buildAppBar() => AppBar(
       title: Text(
         'Sloper',
         style: TextStyle(
-          color: Colors.deepPurple[800],
+          color: Colors.blue[900],
           letterSpacing: 20.0,
         ),
       ),
