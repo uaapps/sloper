@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'search_bar.dart';
-import 'word_description.dart';
-import 'word_translations.dart';
-import 'word_related_phrases.dart';
 import 'footer.dart';
 import 'navigation_bar.dart';
+import 'search_result.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,12 +28,7 @@ class MyApp extends StatelessWidget {
           body: ListView(
             children: [
               SearchBar(),
-              //TODO: create ResultPannel
-              WordDescription(),
-              Divider(),
-              WordTranslations(),
-              Divider(),
-              WordRelatedPhrases(),
+              SearchResult(),
             ],
           ),
           bottomNavigationBar: Footer(),
