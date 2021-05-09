@@ -14,7 +14,9 @@ class SearchResult extends StatelessWidget {
               description: "Іменник чоловічого роду. Множини не має.",
             ),
             Divider(),
-            WordTranslations(),
+            WordTranslations(
+              translation: "кава",
+            ),
             Divider(),
             WordRelatedPhrases(),
           ],

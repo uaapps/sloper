@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WordTranslations extends StatelessWidget {
+  WordTranslations({required this.translation});
+
+  final String translation;
+
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -19,7 +23,7 @@ class WordTranslations extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "1. кава",
+              "1. $translation",
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
