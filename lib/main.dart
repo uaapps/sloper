@@ -8,6 +8,7 @@ import 'search_result.dart';
 
 void main() => runApp(MyApp());
 
+//TODO: think, how to make responsive interface, such that it can be used on any device
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override

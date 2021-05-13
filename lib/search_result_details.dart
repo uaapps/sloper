@@ -16,6 +16,9 @@ List<Widget> _renderNotFoundResult(String word) => [
               "Покищо, в нас немає нічого для слова: $word. Ми старанно працюємо над тим, щоб це виправити. 🙌"),
     ];
 
+//TODO: create data structure
+//TODO: create map that would moch db behaviour
+//TODO: integrate db search into the app
 List<Widget> _renderResult(String word, String wordDescription,
         String translation, String phraseOrigin, String phraseTranslation) =>
     [
