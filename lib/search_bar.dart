@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sloper/search_word.dart';
+import 'package:provider/provider.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -53,7 +55,7 @@ class SearchBar extends StatelessWidget {
               return _suggestions(_kOptions, textEditingValue.text);
             },
             onSelected: (String selection) =>
-                print("You've selected $selection"),
+                context.read<SearchWord>().set(selection),
             fieldViewBuilder: _buildSearchBarField,
           ),
           margin: EdgeInsets.all(100.0),
