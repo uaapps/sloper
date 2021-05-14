@@ -32,7 +32,7 @@ List<Widget> _renderResult(DictionaryItem dictionaryItem) => [
       ),
       Divider(),
       WordTranslations(
-        translation: dictionaryItem.translation,
+        translations: dictionaryItem.translations,
       ),
       // Divider(),
       // WordRelatedPhrases(

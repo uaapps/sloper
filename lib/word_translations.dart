@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 
 class WordTranslations extends StatelessWidget {
-  WordTranslations({required this.translation});
+  WordTranslations({required this.translations});
 
-  final String translation;
+  final List<String> translations;
+
+  List<Widget> _buildTranslations(List<String> translations) => translations
+      .mapIndexed(
+        (index, element) => Text(
+          "${index + 1}. $element",
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      )
+      .toList();
 
   @override
   Widget build(BuildContext context) => Column(
@@ -22,12 +35,8 @@ class WordTranslations extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topLeft,
-            child: Text(
-              "1. $translation",
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              children: _buildTranslations(translations),
             ),
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
           ),
