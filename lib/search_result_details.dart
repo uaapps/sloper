@@ -3,11 +3,9 @@ import 'package:sloper/search_word.dart';
 import 'word_description.dart';
 import 'word_translations.dart';
 import 'word_related_phrases.dart';
+import 'database/dictionary.dart';
 
 import 'package:flutter/material.dart';
-
-bool _showResult(SearchWord word) =>
-    word.searchWord.isNotEmpty && word.searchWord.toLowerCase() == "kaffee";
 
 List<Widget> _renderNotFoundResult(String word) => [
       word.isEmpty
@@ -16,28 +14,36 @@ List<Widget> _renderNotFoundResult(String word) => [
               "Покищо, в нас немає нічого для слова: $word. Ми старанно працюємо над тим, щоб це виправити. 🙌"),
     ];
 
-//TODO: create data structure
-//TODO: create map that would moch db behaviour
-//TODO: integrate db search into the app
-List<Widget> _renderResult(String word, String wordDescription,
-        String translation, String phraseOrigin, String phraseTranslation) =>
-    [
+String _genderToString(Gender gender) {
+  switch (gender) {
+    case Gender.Femininum:
+      return "жіночий";
+    case Gender.Maskulinum:
+      return "чоловічий";
+    case Gender.Neutrum:
+      return "середній";
+  }
+}
+
+List<Widget> _renderResult(DictionaryItem dictionaryItem) => [
       WordDescription(
-        word: word,
-        description: wordDescription,
+        word: dictionaryItem.word,
+        description: "Рід: ${_genderToString(dictionaryItem.gender)}.",
       ),
       Divider(),
       WordTranslations(
-        translation: translation,
+        translation: dictionaryItem.translation,
       ),
-      Divider(),
-      WordRelatedPhrases(
-        phrase: phraseOrigin,
-        phraseTranslation: phraseTranslation,
-      ),
+      // Divider(),
+      // WordRelatedPhrases(
+      //   phrase: dictionaryItem.phrase,
+      //   phraseTranslation: dictionaryItem.phraseTranslation,
+      // ),
     ];
 
-List<Widget> buildSearchResultDetails(SearchWord word) => !_showResult(word)
-    ? _renderNotFoundResult(word.searchWord)
-    : _renderResult("der Kaffee", "Іменник чоловічого роду. Множини не має.",
-        "кава", "einen Kaffee, bitte.", "одну каву, будь ласка.");
+List<Widget> buildSearchResultDetails(SearchWord word) {
+  DictionaryItem? dictionaryItem = findItem(word.searchWord);
+  return dictionaryItem == null
+      ? _renderNotFoundResult(word.searchWord)
+      : _renderResult(dictionaryItem);
+}
