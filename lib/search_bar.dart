@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sloper/search_word.dart';
 import 'package:provider/provider.dart';
+import 'database/dictionary.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key}) : super(key: key);
-  static const List<String> _kOptions = [
-    "Kaffee",
-    "кава",
-    "Tee",
-    "чай",
-    "Milch",
-    "молоко",
-    "Bier",
-    "пиво",
-    "Wasser",
-    "вода",
-  ];
+  SearchBar({Key? key}) : super(key: key);
+  final List<String> _kOptions = dictionary.keys.toList();
 
   Iterable<String> _suggestions(List<String> keyWords, String word) => keyWords
       .where((element) => element.toLowerCase().contains(word.toLowerCase()));

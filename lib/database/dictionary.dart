@@ -1,4 +1,3 @@
-//TODO: Verb
 //TODO: Adjective
 
 enum Gender { Maskulinum, Femininum, Neutrum }
@@ -49,7 +48,23 @@ class Noun implements DictionaryItem {
   }
 
   @override
-  String description() => "Іменник, рід: ${_genderToString(this.gender)}.";
+  String description() => "іменник, рід: ${_genderToString(this.gender)}.";
+}
+
+class Verb implements DictionaryItem {
+  @override
+  List<String> translations;
+
+  @override
+  String word;
+
+  Verb(this.word, this.translations);
+
+  Verb.oneTranslation(String word, String translation)
+      : this(word, [translation]);
+
+  @override
+  String description() => "дієслово";
 }
 
 final Map<String, DictionaryItem> dictionary = {
@@ -73,6 +88,16 @@ final Map<String, DictionaryItem> dictionary = {
     "die Milch",
     "молоко",
   ),
+  "gehen": Verb(
+    "gehen",
+    [
+      "йти",
+      "ходити",
+      "крокувати",
+    ],
+  ),
+  "schlafen": Verb.oneTranslation("schalfen", "спати"),
+  "trinken": Verb.oneTranslation("trinken", "пити"),
 };
 
 DictionaryItem? findItem(String word) => dictionary[word.toLowerCase()];
