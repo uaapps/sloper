@@ -16,35 +16,37 @@ class DictionaryItem {
   );
 
   DictionaryItem.oneTranslation(String word, Gender gender, String translation)
-      : word = word,
-        gender = gender,
-        translations = [translation];
+      : this(word, gender, [translation]);
+
+  DictionaryItem.maskulinumOneTranslation(String word, String translation)
+      : this.oneTranslation(word, Gender.Maskulinum, translation);
+
+  DictionaryItem.femininumOneTranslation(String word, String translation)
+      : this.oneTranslation(word, Gender.Femininum, translation);
+
+  DictionaryItem.neutrumOneTranslation(String word, String translation)
+      : this.oneTranslation(word, Gender.Neutrum, translation);
 }
 
 final dictionary = {
-  "kaffee": DictionaryItem.oneTranslation(
+  "kaffee": DictionaryItem.maskulinumOneTranslation(
     "der Kaffee",
-    Gender.Maskulinum,
     "кава",
   ),
-  "tee": DictionaryItem.oneTranslation(
+  "tee": DictionaryItem.maskulinumOneTranslation(
     "der Tee",
-    Gender.Femininum,
     "чай",
   ),
-  "wasser": DictionaryItem.oneTranslation(
+  "wasser": DictionaryItem.neutrumOneTranslation(
     "das Wasser",
-    Gender.Neutrum,
     "вода",
   ),
-  "bier": DictionaryItem.oneTranslation(
+  "bier": DictionaryItem.neutrumOneTranslation(
     "das Bier",
-    Gender.Neutrum,
     "пиво",
   ),
-  "milch": DictionaryItem.oneTranslation(
+  "milch": DictionaryItem.femininumOneTranslation(
     "die Milch",
-    Gender.Femininum,
     "молоко",
   ),
 };
