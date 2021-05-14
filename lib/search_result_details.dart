@@ -14,21 +14,10 @@ List<Widget> _renderNotFoundResult(String word) => [
               "Покищо, в нас немає нічого для слова: $word. Ми старанно працюємо над тим, щоб це виправити. 🙌"),
     ];
 
-String _genderToString(Gender gender) {
-  switch (gender) {
-    case Gender.Femininum:
-      return "жіночий";
-    case Gender.Maskulinum:
-      return "чоловічий";
-    case Gender.Neutrum:
-      return "середній";
-  }
-}
-
 List<Widget> _renderResult(DictionaryItem dictionaryItem) => [
       WordDescription(
         word: dictionaryItem.word,
-        description: "Рід: ${_genderToString(dictionaryItem.gender)}.",
+        description: dictionaryItem.description(),
       ),
       Divider(),
       WordTranslations(

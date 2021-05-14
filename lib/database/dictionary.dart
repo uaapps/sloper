@@ -1,51 +1,75 @@
-//TODO: Noun
 //TODO: Verb
 //TODO: Adjective
 
 enum Gender { Maskulinum, Femininum, Neutrum }
 
-class DictionaryItem {
-  String word;
-  Gender gender;
+abstract class DictionaryItem {
+  late String word;
+  late List<String> translations;
+
+  String description();
+}
+
+class Noun implements DictionaryItem {
+  @override
   List<String> translations;
 
-  DictionaryItem(
+  @override
+  String word;
+
+  Gender gender;
+
+  Noun(
     this.word,
     this.gender,
     this.translations,
   );
 
-  DictionaryItem.oneTranslation(String word, Gender gender, String translation)
+  Noun.oneTranslation(String word, Gender gender, String translation)
       : this(word, gender, [translation]);
 
-  DictionaryItem.maskulinumOneTranslation(String word, String translation)
+  Noun.maskulinumOneTranslation(String word, String translation)
       : this.oneTranslation(word, Gender.Maskulinum, translation);
 
-  DictionaryItem.femininumOneTranslation(String word, String translation)
+  Noun.femininumOneTranslation(String word, String translation)
       : this.oneTranslation(word, Gender.Femininum, translation);
 
-  DictionaryItem.neutrumOneTranslation(String word, String translation)
+  Noun.neutrumOneTranslation(String word, String translation)
       : this.oneTranslation(word, Gender.Neutrum, translation);
+
+  String _genderToString(Gender gender) {
+    switch (gender) {
+      case Gender.Femininum:
+        return "жіночий";
+      case Gender.Maskulinum:
+        return "чоловічий";
+      case Gender.Neutrum:
+        return "середній";
+    }
+  }
+
+  @override
+  String description() => "Іменник, рід: ${_genderToString(this.gender)}.";
 }
 
-final dictionary = {
-  "kaffee": DictionaryItem.maskulinumOneTranslation(
+final Map<String, DictionaryItem> dictionary = {
+  "kaffee": Noun.maskulinumOneTranslation(
     "der Kaffee",
     "кава",
   ),
-  "tee": DictionaryItem.maskulinumOneTranslation(
+  "tee": Noun.maskulinumOneTranslation(
     "der Tee",
     "чай",
   ),
-  "wasser": DictionaryItem.neutrumOneTranslation(
+  "wasser": Noun.neutrumOneTranslation(
     "das Wasser",
     "вода",
   ),
-  "bier": DictionaryItem.neutrumOneTranslation(
+  "bier": Noun.neutrumOneTranslation(
     "das Bier",
     "пиво",
   ),
-  "milch": DictionaryItem.femininumOneTranslation(
+  "milch": Noun.femininumOneTranslation(
     "die Milch",
     "молоко",
   ),
