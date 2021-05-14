@@ -10,12 +10,19 @@ class SearchBar extends StatelessWidget {
   Iterable<String> _suggestions(List<String> keyWords, String word) => keyWords
       .where((element) => element.toLowerCase().contains(word.toLowerCase()));
 
+  void _setSelection(BuildContext context, String word) =>
+      context.read<SearchWord>().set(word);
+
   Widget _buildSearchBarField(
           BuildContext context,
           TextEditingController textEditingController,
           FocusNode focusNode,
           VoidCallback onFieldSubmitted) =>
       TextField(
+        onSubmitted: (String str) {
+          _setSelection(context, str);
+          onFieldSubmitted();
+        },
         controller: textEditingController,
         focusNode: focusNode,
         decoration: InputDecoration(
@@ -44,8 +51,7 @@ class SearchBar extends StatelessWidget {
               }
               return _suggestions(_kOptions, textEditingValue.text);
             },
-            onSelected: (String selection) =>
-                context.read<SearchWord>().set(selection),
+            onSelected: (String selection) => _setSelection(context, selection),
             fieldViewBuilder: _buildSearchBarField,
           ),
           margin: EdgeInsets.all(100.0),
