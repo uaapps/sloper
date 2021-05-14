@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 enum Gender { Maskulinum, Femininum, Neutrum }
 
 abstract class DictionaryItem {
@@ -21,18 +23,6 @@ class Noun implements DictionaryItem {
     this.gender,
     this.translations,
   );
-
-  Noun.oneTranslation(String word, Gender gender, String translation)
-      : this(word, gender, [translation]);
-
-  Noun.maskulinumOneTranslation(String word, String translation)
-      : this.oneTranslation(word, Gender.Maskulinum, translation);
-
-  Noun.femininumOneTranslation(String word, String translation)
-      : this.oneTranslation(word, Gender.Femininum, translation);
-
-  Noun.neutrumOneTranslation(String word, String translation)
-      : this.oneTranslation(word, Gender.Neutrum, translation);
 
   String _genderToString(Gender gender) {
     switch (gender) {
@@ -58,9 +48,6 @@ class Verb implements DictionaryItem {
 
   Verb(this.word, this.translations);
 
-  Verb.oneTranslation(String word, String translation)
-      : this(word, [translation]);
-
   @override
   String description() => "дієслово";
 }
@@ -74,47 +61,105 @@ class Adjective implements DictionaryItem {
 
   Adjective(this.word, this.translations);
 
-  Adjective.oneTranslation(String word, String translation)
-      : this(word, [translation]);
-
   @override
   String description() => "прикметник";
 }
 
-final Map<String, DictionaryItem> dictionary = {
-  "kaffee": Noun.maskulinumOneTranslation(
-    "der Kaffee",
-    "кава",
-  ),
-  "tee": Noun.maskulinumOneTranslation(
-    "der Tee",
-    "чай",
-  ),
-  "wasser": Noun.neutrumOneTranslation(
-    "das Wasser",
-    "вода",
-  ),
-  "bier": Noun.neutrumOneTranslation(
-    "das Bier",
-    "пиво",
-  ),
-  "milch": Noun.femininumOneTranslation(
-    "die Milch",
-    "молоко",
-  ),
-  "gehen": Verb(
-    "gehen",
-    [
-      "йти",
-      "ходити",
-      "крокувати",
-    ],
-  ),
-  "schlafen": Verb.oneTranslation("schalfen", "спати"),
-  "trinken": Verb.oneTranslation("trinken", "пити"),
-  "spannend": Adjective("spannend", ["захопливий", "напружений", "натягнутий"]),
-  "geizig": Adjective("geizig", ["скупий", "жадібний"]),
-  "würzig": Adjective.oneTranslation("würzig", "пряний"),
-};
+final dictionaryJson = '''[
+  {
+    "word": "der Kaffee",
+    "translations": ["кава"],
+    "gender": "m",
+    "type": "noun"
+  },
+  {
+    "word": "der Tee",
+    "translations": ["чай"],
+    "gender": "m",
+    "type": "noun"
+  },
+  {
+    "word": "die Milch",
+    "translations": ["молоко"],
+    "gender": "f",
+    "type": "noun"
+  },
+  {
+    "word": "das Bier",
+    "translations": ["пиво"],
+    "gender": "n",
+    "type": "noun"
+  },
+  {
+    "word": "schlafen",
+    "translations": ["спати"],
+    "type": "verb"
+  },
+  {
+    "word": "trinken",
+    "translations": ["пити"],
+    "type": "verb"
+  },
+  {
+    "word": "spannend",
+    "translations": ["захопливий", "напружений", "натягнутий"],
+    "type": "adj"
+  },
+  {
+    "word": "geizig",
+    "translations": ["скупий", "жадібний"],
+    "type": "adj"
+  }
+]''';
 
-DictionaryItem? findItem(String word) => dictionary[word.toLowerCase()];
+Gender? _stringToGender(String str) {
+  switch (str.toLowerCase()) {
+    case "n":
+      return Gender.Neutrum;
+    case "f":
+      return Gender.Femininum;
+    case "m":
+      return Gender.Maskulinum;
+    default:
+      return null;
+  }
+}
+
+DictionaryItem? _buildDictionaryItem(dynamic data) {
+  String? word = data['word'];
+  List<String> translations =
+      (data['translations'] as List).map((e) => e as String).toList();
+
+  switch ((data['type'] as String).toLowerCase()) {
+    case 'noun':
+      Gender? gender = _stringToGender(data['gender']);
+      return gender != null && word != null && translations.isNotEmpty
+          ? Noun(word, gender, translations)
+          : null;
+    case 'verb':
+      return word != null && translations.isNotEmpty
+          ? Verb(word, translations)
+          : null;
+    case 'adj':
+      return word != null && translations.isNotEmpty
+          ? Adjective(word, translations)
+          : null;
+  }
+}
+
+Map<String, DictionaryItem> _loadDictionary(String jsonString) {
+  List<dynamic> items = jsonDecode(jsonString);
+  List<DictionaryItem> dictionaryItems = items
+      .map(_buildDictionaryItem)
+      .where((element) => element != null)
+      .toList() as List<DictionaryItem>;
+
+  Iterable<MapEntry<String, DictionaryItem>> entries =
+      dictionaryItems.map((e) => MapEntry(e.word, e));
+
+  return Map.fromEntries(entries);
+}
+
+final Map<String, DictionaryItem> dictionary = _loadDictionary(dictionaryJson);
+
+DictionaryItem? findItem(String word) => dictionary[word];
