@@ -1,5 +1,3 @@
-//TODO: Adjective
-
 enum Gender { Maskulinum, Femininum, Neutrum }
 
 abstract class DictionaryItem {
@@ -67,6 +65,22 @@ class Verb implements DictionaryItem {
   String description() => "дієслово";
 }
 
+class Adjective implements DictionaryItem {
+  @override
+  List<String> translations;
+
+  @override
+  String word;
+
+  Adjective(this.word, this.translations);
+
+  Adjective.oneTranslation(String word, String translation)
+      : this(word, [translation]);
+
+  @override
+  String description() => "прикметник";
+}
+
 final Map<String, DictionaryItem> dictionary = {
   "kaffee": Noun.maskulinumOneTranslation(
     "der Kaffee",
@@ -98,6 +112,9 @@ final Map<String, DictionaryItem> dictionary = {
   ),
   "schlafen": Verb.oneTranslation("schalfen", "спати"),
   "trinken": Verb.oneTranslation("trinken", "пити"),
+  "spannend": Adjective("spannend", ["захопливий", "напружений", "натягнутий"]),
+  "geizig": Adjective("geizig", ["скупий", "жадібний"]),
+  "würzig": Adjective.oneTranslation("würzig", "пряний"),
 };
 
 DictionaryItem? findItem(String word) => dictionary[word.toLowerCase()];
