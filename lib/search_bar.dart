@@ -27,6 +27,7 @@ class SearchBar extends StatelessWidget {
         focusNode: focusNode,
         decoration: InputDecoration(
           hintText: "Почніть писати слово німецькою чи українською мовою",
+          border: InputBorder.none,
         ),
         style: TextStyle(
           fontSize: 18.0,
@@ -44,6 +45,7 @@ class SearchBar extends StatelessWidget {
           ),
         ),
         child: Container(
+          height: 48.0,
           child: Autocomplete<String>(
             optionsBuilder: (TextEditingValue textEditingValue) {
               if (textEditingValue.text == "") {
@@ -54,8 +56,8 @@ class SearchBar extends StatelessWidget {
             onSelected: (String selection) => _setSelection(context, selection),
             fieldViewBuilder: _buildSearchBarField,
           ),
-          margin: EdgeInsets.all(100.0),
-          padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
+          margin: EdgeInsets.all(80.0),
+          padding: EdgeInsets.only(left: 20.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
