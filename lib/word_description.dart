@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'common.dart';
+
 class WordDescription extends StatelessWidget {
   WordDescription({required this.word, required this.description});
 
@@ -14,7 +16,7 @@ class WordDescription extends StatelessWidget {
               Text(
                 word,
                 style: TextStyle(
-                  fontSize: 26.0,
+                  fontSize: CommonFuncs.isMobileScreen(context) ? 20.0 : 26.0,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.2,
                 ),
@@ -26,11 +28,13 @@ class WordDescription extends StatelessWidget {
             child: Text(
               description,
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: CommonFuncs.isMobileScreen(context) ? 14.0 : 16.0,
                 color: Colors.grey[600],
               ),
             ),
-            margin: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
+            margin: CommonFuncs.isMobileScreen(context)
+                ? EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0)
+                : EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
           ),
         ],
       );

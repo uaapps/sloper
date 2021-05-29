@@ -12,30 +12,32 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (context) => SearchWord(),
-        child: MaterialApp(
-          title: 'Sloper',
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              backgroundColor: Colors.white,
-            ),
-            dividerTheme: DividerThemeData(
-              thickness: 3.0,
-              color: Colors.grey[600],
-              space: 50.0,
-            ),
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => SearchWord(),
+      child: MaterialApp(
+        title: 'Sloper',
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
           ),
-          home: Scaffold(
-            appBar: buildAppBar(),
-            body: ListView(
-              children: [
-                SearchBar(),
-                SearchResult(),
-              ],
-            ),
-            bottomNavigationBar: Footer(),
+          dividerTheme: DividerThemeData(
+            thickness: 3.0,
+            color: Colors.grey[600],
+            space: 50.0,
           ),
         ),
-      );
+        home: Scaffold(
+          appBar: buildAppBar(),
+          body: ListView(
+            children: [
+              SearchBar(),
+              SearchResult(),
+            ],
+          ),
+          bottomNavigationBar: Footer(),
+        ),
+      ),
+    );
+  }
 }

@@ -18,17 +18,18 @@ Widget _buildDescription(String text, TextStyle textStyle) => Container(
       margin: EdgeInsets.only(top: 5.0),
     );
 
-AppBar buildAppBar() => AppBar(
-      toolbarHeight: 80.0,
-      title: Column(
-        children: [
-          _buildTitle("Sloper", _textStyle),
-          _buildDescription(
-              "Словник перекладів",
-              _textStyle.copyWith(
-                fontSize: 14.0,
-                letterSpacing: 8.0,
-              )),
-        ],
-      ),
-    );
+AppBar buildAppBar() {
+  return AppBar(
+    title: Column(
+      children: [
+        _buildTitle("Sloper", _textStyle),
+        _buildDescription(
+            "Словник перекладів",
+            _textStyle.copyWith(
+              fontSize: 12.0,
+              letterSpacing: 6.0,
+            )),
+      ],
+    ),
+  );
+}

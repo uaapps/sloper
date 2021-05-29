@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'common.dart';
+
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        height: 60.0,
+        height: CommonFuncs.isMobileScreen(context) ? 40.0 : 60.0,
         color: Colors.indigo[900],
         child: Center(
           child: Text(

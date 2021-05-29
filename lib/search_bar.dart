@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sloper/search_word.dart';
 import 'package:provider/provider.dart';
+import 'common.dart';
 import 'database/dictionary.dart';
 
 class SearchBar extends StatelessWidget {
@@ -26,16 +27,15 @@ class SearchBar extends StatelessWidget {
         controller: textEditingController,
         focusNode: focusNode,
         decoration: InputDecoration(
-          hintText: "Почніть писати слово німецькою чи українською мовою",
+          hintText: "Почніть писати німецькою чи українською",
           border: InputBorder.none,
         ),
         style: TextStyle(
-          fontSize: 18.0,
+          fontSize: CommonFuncs.isMobileScreen(context) ? 14.0 : 18.0,
         ),
       );
 
-  @override
-  Widget build(BuildContext context) => Container(
+  Widget buildForBigScreen(BuildContext context) => Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -64,4 +64,39 @@ class SearchBar extends StatelessWidget {
           ),
         ),
       );
+
+  Widget buildForMobileScreen(BuildContext context) => Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.pink,
+              Colors.orange,
+            ],
+          ),
+        ),
+        child: Container(
+          height: 38.0,
+          child: Autocomplete<String>(
+            optionsBuilder: (TextEditingValue textEditingValue) {
+              if (textEditingValue.text == "") {
+                return const Iterable<String>.empty();
+              }
+              return _suggestions(_kOptions, textEditingValue.text);
+            },
+            onSelected: (String selection) => _setSelection(context, selection),
+            fieldViewBuilder: _buildSearchBarField,
+          ),
+          margin: EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 30.0),
+          padding: EdgeInsets.only(left: 10.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+      );
+
+  @override
+  Widget build(BuildContext context) => CommonFuncs.isMobileScreen(context)
+      ? buildForMobileScreen(context)
+      : buildForBigScreen(context);
 }
