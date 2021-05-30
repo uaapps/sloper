@@ -1,6 +1,8 @@
 # sloper
 
-A new Flutter project.
+```sh
+bin/web
+```
 
 ## Getting Started
 
