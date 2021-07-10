@@ -1,0 +1,8 @@
+[submodule "frontier"]
+	path = server/deps/frontier
+	url = git@github.com:zero-deps/frontier.git
+	branch = main
+[submodule "db"]
+	path = server/deps/db
+	url = git@github.com:zero-deps/db.git
+	branch = main
