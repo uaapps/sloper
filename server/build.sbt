@@ -3,7 +3,8 @@ ThisBuild / scalaVersion := "3.0.1"
 lazy val sloper = project
   .in(file("."))
   .settings(
-    scalacOptions ++= Seq(
+    fork := true
+  , scalacOptions ++= Seq(
       "-language:strictEquality"
     , "-language:postfixOps"
     , "-Yexplicit-nulls"

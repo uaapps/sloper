@@ -1,0 +1,30 @@
+syntax = "proto3";
+package api;
+
+message Pull {
+  oneof pull_oneof {
+    Ping ping = 1;
+    ResultAsk resultAsk = 11;
+  }
+}
+
+message Ping {}
+message ResultAsk {
+  string word = 1;
+}
+
+message Push {
+  oneof push_oneof {
+    Pong pong = 1;
+    Suggestions suggestions = 10;
+    ResultOk resultOk = 11;
+  }
+}
+
+message Pong {}
+message Suggestions {
+  repeated string xs = 1;
+}
+message ResultOk {
+  string t = 1;
+}

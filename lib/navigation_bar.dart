@@ -6,17 +6,17 @@ TextStyle _textStyle = TextStyle(
 );
 
 Widget _buildTitle(String title, TextStyle textStyle) => Text(
-      title,
-      style: textStyle,
-    );
+  title,
+  style: textStyle,
+);
 
 Widget _buildDescription(String text, TextStyle textStyle) => Container(
-      child: Text(
-        text,
-        style: textStyle,
-      ),
-      margin: EdgeInsets.only(top: 5.0),
-    );
+  child: Text(
+    text,
+    style: textStyle,
+  ),
+  margin: EdgeInsets.only(top: 5.0),
+);
 
 AppBar buildAppBar() {
   return AppBar(

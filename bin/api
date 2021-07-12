@@ -1,0 +1,2 @@
+# /usr/local/bin/dart pub global install protobuf
+protoc -I=lib --dart_out=lib lib/api.proto
